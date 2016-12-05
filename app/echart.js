@@ -12,34 +12,34 @@ class Echart extends React.Component {
 		let myChart = echarts.init(document.getElementById('main1'));
         var graph_data = {
             nodes:[{
-                    name: '节点1',
+                    name: '1',
                     x: 50,
                     y: 50
                 }, {
-                    name: '节点2',
+                    name: '2',
                     x: 150,
                     y: 50
                 }, {
-                    name: '节点3',
+                    name: '3',
                     x: 100,
                     y: 80
                 }, {
-                    name: '节点4',
+                    name: '4',
                     x: 100,
                     y: 20
                 }],
             links:[{
-                    source: '节点1',
-                    target: '节点3'
+                    source: '1',
+                    target: '3'
                 }, {
-                    source: '节点2',
-                    target: '节点3'
+                    source: '2',
+                    target: '3'
                 }, {
-                    source: '节点2',
-                    target: '节点4'
+                    source: '2',
+                    target: '4'
                 }, {
-                    source: '节点1',
-                    target: '节点4'
+                    source: '3',
+                    target: '4'
                 }]
         }
         graph_data.nodes.forEach(function(node) {
@@ -80,7 +80,7 @@ class Echart extends React.Component {
         animationEasingUpdate: 'quinticInOut',
         series: [{
                 type: 'graph',
-                layout: 'none',
+                layout: 'force',
                 symbolSize: 50,
                 roam: true,
                 label: {
@@ -106,6 +106,9 @@ class Echart extends React.Component {
                         width: 2,
                         curveness: 0
                     }
+                },
+                force: {
+                    repulsion: 100
                 }
             }
             ]
