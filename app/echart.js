@@ -27,6 +27,10 @@ class Echart extends React.Component {
                     name: '4',
                     x: 100,
                     y: 20
+                },{
+                    name: '5',
+                    x: 10,
+                    y: 20
                 }],
             links:[{
                     source: '1',
@@ -40,6 +44,9 @@ class Echart extends React.Component {
                 }, {
                     source: '3',
                     target: '4'
+                },{
+                    source: '5',
+                    target: '1'
                 }]
         }
         graph_data.nodes.forEach(function(node) {
