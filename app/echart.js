@@ -5,9 +5,18 @@ require('echarts/lib/chart/bar');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title')
 require('echarts/lib/chart/graph');
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+const EventCalendar = require('react-event-calendar');
 
+
+BigCalendar.setLocalizer(
+  BigCalendar.momentLocalizer(moment)
+);
 
 class Echart extends React.Component {
+
+
 	componentDidMount(){
 		let myChart = echarts.init(document.getElementById('main1'));
         var graph_data = {
@@ -59,17 +68,7 @@ class Echart extends React.Component {
             node.draggable = true;
         });
 		myChart.setOption({
-    		// title: { text: '我的技能' },
-    		// tooltip: {},
-    		// xAxis: {
-      //   	data: ["挖掘机","挖掘机","挖掘机","挖掘机","挖掘机","挖掘机"]
-    		// },
-   	 	// 	yAxis: {},
-    		// series: [{
-      //   	name: '娴熟度',
-      //   	type: 'force',
-      //   	data: [5, 20, 36, 10, 10, 20]
-    		// }]
+
             title: {
             text: 'Les Miserables',
             subtext: 'Default layout',
@@ -126,19 +125,44 @@ class Echart extends React.Component {
 		
 	}
  render () {
-    
+    const myEventsList =[];
+
+    const events = [
+        {
+            start: '2015-07-20',
+            end: '2015-07-02',
+            eventClasses: 'optionalEvent',
+            title: 'test event',
+            description: 'This is a test description of an event',
+        },
+        {
+            start: '2015-07-19',
+            end: '2015-07-25',
+            title: 'test event',
+            description: 'This is a test description of an event',
+            data: 'you can add what ever random data you may want to use later',
+        },
+    ];
     return(
     	<div>
-            <div>
 
-            </div>
-    		<div id="main1" style={{width:"600px",height:"600px"}}></div>
-    		
+    		<EventCalendar 
+                month={7}
+                year={2015}
+                events={events} 
+                onEventClick={(target, eventData, day) => console.log(eventData)}
+                />
     	</div>
       
-    )
+    );
   }
 }
 
+            // <BigCalendar
+            //   events={myEventsList}
+            //   startAccessor='startDate'
+            //   endAccessor='endDate'
+            // />
+            // <div id="main1" style={{width:"600px",height:"600px"}}></div>
 
 export default Echart ;
